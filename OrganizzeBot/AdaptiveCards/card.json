@@ -1,0 +1,66 @@
+{
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.0",
+	"body": [
+		{
+			"type": "TextBlock",
+			"size": "medium",
+			"weight": "bolder",
+			"text": "Input.Text elements",
+			"horizontalAlignment": "center"
+		},
+		{
+			"type": "Input.Text",
+			"placeholder": "Descrição",
+			"style": "text",
+			"maxLength": 0,
+			"id": "SimpleVal"
+		},
+		{
+			"type": "Input.Number",
+			"placeholder": "Valor",
+			"min": 0,
+			"id": "NumVal"
+		},
+		{
+			"type": "Input.Date",
+			"placeholder": "Data",
+			"id": "DateVal",
+			"value": "2017-09-20"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Categoria"
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "CompactSelectVal",
+			"style": "compact",
+			"value": "1",
+			"choices": [
+				{
+					"title": "Alimentação",
+					"value": "1"
+				},
+				{
+					"title": "Despesas Pessoais",
+					"value": "2"
+				},
+				{
+					"title": "Almoço",
+					"value": "3"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Salvar",
+			"data": {
+				"id": "1234567890"
+			}
+		}
+	]
+}

@@ -37,6 +37,7 @@ namespace OrganizzeBot.Dialogs
                     case "Consultar movimentação":
                         break;
                     case "Adicionar Movimentação":
+
                         break;
                     default:
                         break;
@@ -67,7 +68,7 @@ namespace OrganizzeBot.Dialogs
             await context.PostAsync("**Olá, eu sou um bot**");
         }
 
-        [LuisIntent("Movimentacao")]
+        /*[LuisIntent("Movimentacao")]
         public async Task Movimentacao(IDialogContext context,LuisResult result)
         {
 
@@ -77,6 +78,17 @@ namespace OrganizzeBot.Dialogs
             var categoria = result.Entities?.Where(x => x.Type.Equals("categoria")).Select(e => e.Entity);
 
             await context.PostAsync($"beibe do beibe {string.Join(",",entidades.ToArray())} ");
+        }*/
+
+        [LuisIntent("Adicionar_Movimentacao")]
+        public async Task AdicionarMovimentacao(IDialogContext context,LuisResult result)
+        {
+
+        }
+
+        [LuisIntent("Consultar_Movimentacao")]
+        public async Task ConsultarMovimentacao(IDialogContext context,LuisResult result)
+        {
 
         }
     }

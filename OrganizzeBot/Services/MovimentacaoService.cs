@@ -59,6 +59,29 @@ namespace OrganizzeBot.Services
             }
         }
 
+        public async Task<bool> AddMovimentacao(Movimentacao movimentacao)
+        {
+            try
+            {
+                var response = await client.PostAsJsonAsync<Movimentacao>("transactions", movimentacao);
+
+                if (!response.IsSuccessStatusCode)
+                    return false;
+                else{
+                    var json = await response.Content.ReadAsStringAsync();
+                    var retorno = JsonConvert.DeserializeObject<Movimentacao>(json);
+
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
         public void Dispose()
         {
             client.Dispose();

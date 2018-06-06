@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -12,12 +13,17 @@ namespace OrganizzeBot.Models
     {
         [JsonProperty("id")]
         public int Id { get; set; }
+
         [JsonProperty("description")]
         [Prompt("Qual a descrição da Movimentação?")]
+        [Required]
         public string Description { get; set; }
+
         [JsonProperty("date")]
         [Prompt("Qual a data?")]
+        [Required]
         public string Date { get; set; }
+
         [JsonProperty("paid")]
         public bool Paid { get; set; }
         [JsonProperty("amount_cents")]
@@ -54,5 +60,24 @@ namespace OrganizzeBot.Models
         public DateTime Created_at { get; set; }
         [JsonProperty("updated_at")]
         public DateTime Updated_at { get; set; }
+
+        public static Movimentacao Parse(dynamic dyn)
+        {
+            try
+            {
+                return new Movimentacao
+                {
+                    Description = dyn.Descricao.ToString(),
+                    Amount_cents = Convert.ToInt32(dyn.Valor.ToString().Replace(".", "")),
+                    Category_id = Convert.ToInt32(dyn.Categoria.ToString()),
+                    Date = dyn.Data.ToString()
+                };
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
